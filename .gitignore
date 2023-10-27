@@ -25,7 +25,9 @@ replay_pid*
 
 
 #environment
-.idea/workspace.xml 
-.idea/libraries
+idea/workspace.xml 
+idea/libraries
 
-.DS_Store
+out/
+
+DS_Store
