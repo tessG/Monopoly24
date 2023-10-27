@@ -30,5 +30,5 @@ replay_pid*
 
 out/
 
-DS_Store
+.DS_Store
 MonopolyE23.iml
