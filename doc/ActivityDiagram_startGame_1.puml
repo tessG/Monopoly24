@@ -1,0 +1,21 @@
+
+
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Main.main();
+:new Game();
+if (io.readGameData()) then (succes)
+
+else (failure)
+     :ui.getUserInput("Skriv spillernavn. Tast Q for at quitte",6);
+
+      endif
+
+:game.createPlayers();
+
+
+stop
+
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+'Klient klasse til at styre spillet
+
+
+class Main
+class Game
+
+'package "util"{
+'class TextUI
+'class FileIO
+'}
+'package "model"{
+'class Player
+'class Account
+'}
+Main *-- Game
+Game *-- TextUI
+Game *-- FileIO
+Game *-- Player
+
+
+Main : + static void main(string [] args)
+
+Player  : - String name
+Player  : - int balance
+Player  : + Player(String, int)
+Player  : + String toString()
+Player  : + int deposit()
+
+
+
+'todo - Game: add new controller class as substitute for Main, let Main instantiate this class
+Game : - ArrayList<Player> players
+Game : - int maxPlayers
+Game : - TextUI ui
+Game : - FileIO io
+Game : + Game(int maxPlayers)
+
+Game : + void setup()
+Game : + void registerPlayer(String name, int amount)
+Game : + void displayPlayers()
+Game : + void endGame()
+
+
+'todo - TextUI: copy  from drinksmenu (https://github.com/Dat1Cphbusiness/DrinksMenu/blob/main/TextUI.java)
+TextUI : + String getInput(String msg)
+TextUI : - Scanner scanner
+
+
+FileIO : - Scanner scanner
+FileIO : + ArrayList<Player> readPlayerData(String path)
+FileIO : + void savePlayerData(ArrayList<Player> players)
+
+@enduml
