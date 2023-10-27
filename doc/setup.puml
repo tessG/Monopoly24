@@ -2,8 +2,8 @@
 'https://plantuml.com/activity-diagram-beta
 
 start
-:Main.main();
-:new Game();
+:start spil;
+:hent spil data;
 if (Er der data gemt?) then (Yes)
 
    else (No)
@@ -11,7 +11,7 @@ if (Er der data gemt?) then (Yes)
 
       endif
 
-
+:lav spillerobjekter;
 stop
 
 @enduml
