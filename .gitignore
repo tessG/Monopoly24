@@ -25,9 +25,10 @@ replay_pid*
 
 
 #environment
-idea/workspace.xml 
-idea/libraries
+.idea/ 
+
 
 out/
 
 DS_Store
+MonopolyE23.iml
