@@ -1,0 +1,14 @@
+@startuml
+
+  actor user
+
+  usecase "ThrowAndMove"
+  usecase "StartGame"
+  usecase "EndGame"
+  usecase "RegisterPlayers"
+  usecase "LandAndAct"
+
+
+user --> StartGame
+
+@enduml
