@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Main.main();
+:new Game();
+if (Er der data gemt?) then (Yes)
+
+   else (No)
+     :Start dialog for at indhente spillernavne;
+
+      endif
+
+
+stop
+
+@enduml

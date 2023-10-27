@@ -1,0 +1,131 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main
+class Game
+
+package "util"{
+class TextUI
+class FileIO
+
+}
+
+package "model"{
+class Player
+class CardDeck
+class Board
+class Dice
+class Field
+class Property
+class Plot
+class Consequence
+class Business
+class Prison
+class Tax
+class Parking
+class Start
+class Chance
+class ShippingLine
+class Brewery
+}
+
+
+Property : + Player owner
+Property : + int seriesID
+Property : + String toString()
+Property : + String onLand(Player p)
+Property : + String onAccept(Player p)
+Property : + String onReject(Player p)
+
+Plot : + String onLand(Player p)
+
+
+Main *-- Game
+Game *-- TextUI
+Game *-- FileIO
+Game *-- Player
+Game *--Board
+Board *-- Dice
+Board *-- Field
+Board *-- CardDeck
+Field <|-- Property
+Field <|-- Consequence
+
+Property <|-- Plot
+Property <|-- Business
+Business <|-- ShippingLine
+Business <|-- Brewery
+Consequence <|-- Prison
+Consequence <|-- Tax
+Consequence <|-- Parking
+Consequence <|-- Start : is - a
+Consequence <|-- Chance
+
+
+Main : + static void main(string [] args)
+
+Player  : - String name
+Player  : - int balance
+Player  : + Player(String, int)
+Player  : + String toString()
+Player  : + int deposit()
+'-----------new:
+Player  : +int updatePosition(int diceValue)
+Player : -boolean startPassed()
+Player  : + void withdraw(int amount)
+Player : + boolean buyProperty(int amount)
+Player : + boolean payRent(int amount, Player receiver)
+
+
+Game : - ArrayList<Player> players
+Game : - int maxPlayers
+Game : - TextUI ui
+Game : - FileIO io
+Game : - Player currentplayer
+Game : + Game(int maxPlayers, int minPlayers)
+Game : - void registerPlayer(String name, int amount)
+Game : + void setup()
+Game : - void runPlayerSetupDialog();
+Game : - void runGameLoop()
+Game : - void throwAndMove()
+Game : - void endGame()
+Game : - void displayPlayers()
+Game : - Player getPlayer(int i)
+Game : - ArrayList<Player> getPlayers()
+
+TextUI : + String getInput(String msg)
+TextUI : - Scanner scanner
+TextUI : + void displayMessage(String msg)
+
+
+FileIO : - Scanner scanner
+FileIO : + ArrayList<Player> readPlayerData(String path)
+FileIO : + void savePlayerData(ArrayList<Player> players)
+FileIO : + String[] readBoardData(String path)
+
+Field : - String label
+Field : - int ID
+Field : - int cost
+Field : - int income
+Field : - String option
+Field : + Field(ID, label, cost, income)
+Field : + String toString()
+Field : + String onLand(Player p)
+Field : + String processResponse(Player p)
+Field : # String onAccept(Player p)
+Field : # String onReject(Player p)
+
+
+Board : - Field[] fields
+Board : - CardDeck cardDeck
+Board : + Dice dice
+Board : + Board(String [] fields, String [] cards])
+Board : - void createFields(String [] data)
+Board : + Field getField(int id)
+
+CardDeck : - String[] carddata
+CardDeck : + CardDeck
+CardDeck : + String getNext()
+
+Dice : int rollDiceSum()
+@enduml

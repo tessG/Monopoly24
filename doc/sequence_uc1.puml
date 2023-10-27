@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Main -> Game: new()
+Main -> Game: setup()
+Game -> FileIO: new()
+Game -> FileIO: ArrayList<String> data = readFileData(String path)
+alt data.size() > 0
+loop for each s in data
+Game -> Player : new(name, 30000);
+
+end
+
+else
+loop players.size() < 6
+Game -> TextUI : new()
+Game -> TextUI : name = getInput()
+Game -> Player : new (name, 30000)
+end
+
+end
+Game -> Game : displayPlayers();
+@enduml
