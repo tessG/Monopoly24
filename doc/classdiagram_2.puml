@@ -25,7 +25,9 @@ Player  : - String name
 Player  : - int balance
 Player  : + Player(String, int)
 Player  : + String toString()
-Player  : + int deposit()
+Player  : + void deposit(int amount)
+Player  : + int getBalance()
+Player : + String getName()
 
 
 

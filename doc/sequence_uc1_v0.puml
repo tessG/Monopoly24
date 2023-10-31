@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+Participant Main
+Participant Game
+Participant FileIO
+Participant TextUI
+Participant Player
+
+
+Main -> Game: new()
+Main -> Game: setup()
+
+'... følg metodekaldene i Game.setup og tegn dem ind som vandrette streger
+' returnering af værdier fra en metode *kan* vises med en stiplet pil: <--
+' brug alt-else-end til at vise betingelser
+' brug loop til at vise gentagelser
+
+Game -> Game : displayPlayers();
+@enduml
