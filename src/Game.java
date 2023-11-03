@@ -20,7 +20,6 @@ public class Game {
                 String name = row[0];                           // ==> "Egon"
                 int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
                 registerPlayer(name, balance);
-
                                       // placerer objektet i listen med kunder
             }
         }else{
@@ -28,6 +27,7 @@ public class Game {
         }
         testCode();
         endGame();
+
     }
 
     private void runPlayerSetupDialog() {
@@ -44,11 +44,10 @@ public class Game {
             }
          registerPlayer(input, 30000);
         }
+
     }
 
     private void registerPlayer(String name, int balance) {
-
-
         Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
         players.add(p);
     }
