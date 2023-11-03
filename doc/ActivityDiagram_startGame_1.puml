@@ -1,21 +1,25 @@
-
-
 @startuml
 'https://plantuml.com/activity-diagram-beta
 
 start
-:Main.main();
-:new Game();
-if (io.readGameData()) then (succes)
 
-else (failure)
-     :ui.getUserInput("Skriv spillernavn. Tast Q for at quitte",6);
+:setup;
+:hent spiller data;
+if (Er der noget spiller data?) then (Yes)
+
+
+   else (No)
+
+   :Start dialog;
+
+
 
       endif
+        label s
+         :lav spillerliste;
 
-:game.createPlayers();
+      :kør næste runde;
 
-
-stop
 
 @enduml
+

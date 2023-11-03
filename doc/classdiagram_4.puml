@@ -1,0 +1,105 @@
+@startuml
+'Domænemodellen giver nye entity klasser
+'Pakker, model og util
+
+
+class Main
+class Game
+'package "util"{
+    class TextUI
+    class FileIO
+'}
+
+'package "model"{
+    class Player
+    class Field
+      class Dice
+      class Account
+      class CardDeck
+      class Board
+'}
+
+Main *-- Game
+Game *-- TextUI
+Game *-- FileIO
+Game *-- Player
+Player *-- Account
+Game *--Board
+Game *-- Dice
+Board *-- Field
+Board *-- CardDeck
+
+
+
+Main : + static void main(string [] args)
+
+Player  : - String name
+Player  : - int balance
+Player  : + Player(String, int)
+Player  : + String toString()
+Player  : + int getBalance()
+Player : + String getName()
+
+'-----------new:
+Player  : +int updatePosition(int diceValue)
+Player : -boolean startPassed()
+Player : + boolean buyProperty(int amount)
+Player : + boolean payRent(int amount, Player receiver)
+
+Account :  - int balance
+Account  : + void withdraw(int amount)
+Account  : + void deposit(int amount)
+
+
+Game : - ArrayList<Player> players
+Game : - int maxPlayers
+Game : - TextUI ui
+Game : - FileIO io
+Game : - Player currentplayer
+Game : + Game(int maxPlayers, int minPlayers)
+Game : - void registerPlayer(String name, int amount)
+Game : + void setup()
+Game : - void runPlayerSetupDialog();
+Game : - void runGameLoop()
+Game : - void throwAndMove()
+Game : - void endGame()
+Game : - void displayPlayers()
+Game : - Player getPlayer(int i)
+Game : - ArrayList<Player> getPlayers()
+
+TextUI : + String getInput(String msg)
+TextUI : - Scanner scanner
+TextUI : + void displayMessage(String msg)
+
+
+FileIO : - Scanner scanner
+FileIO : + ArrayList<Player> readPlayerData(String path)
+FileIO : + void savePlayerData(ArrayList<Player> players)
+FileIO : + String[] readBoardData(String path)
+
+Field : - String label
+Field : - int ID
+Field : - int cost
+Field : - int income
+Field : - String option
+Field : + Field(ID, label, cost, income)
+Field : + String toString()
+Field : + String onLand(Player p)
+Field : + String processResponse(Player p)
+Field : # String onAccept(Player p)
+Field : # String onReject(Player p)
+
+
+Board : - Field[] fields
+Board : - CardDeck cardDeck
+Board : + Dice dice
+Board : + Board(String [] fields, String [] cards])
+Board : - void createFields(String [] data)
+Board : + Field getField(int id)
+
+CardDeck : - String[] carddata
+CardDeck : + CardDeck
+CardDeck : + String getNext()
+
+Dice : int rollDiceSum()
+@enduml
