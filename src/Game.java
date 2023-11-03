@@ -39,7 +39,7 @@ public class Game {
                 if(players.size()>1){
                     break;
                 }else{
-                    input = ui.getInput("Skriv navn på spiller: ");
+                    input = ui.getInput("Der skal være mindst 2 spillere. Skriv navn på spiller: ");
                 }
             }
          registerPlayer(input, 30000);
