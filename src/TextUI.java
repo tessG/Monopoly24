@@ -6,9 +6,19 @@ public class TextUI {
 
     //shows a message and returns the user's input as a String
     public String getInput(String msg){
-        System.out.println(msg);
+        this.displayMessage(msg);
         return scan.nextLine();
     }
+
+
+   public void displayMessage(String msg){
+       System.out.println("**********");
+       System.out.println("**"+ msg + "**");
+       System.out.println("**********");
+   }
+
+
+
 
     public int getNumericInput(String msg){
         System.out.println(msg);//Stille brugeren et spørgsmål

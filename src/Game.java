@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     FileIO io = new FileIO();
+    TextUI ui = new TextUI();
     int maxPlayers;
 
     public Game(int maxPlayers) {
@@ -16,24 +17,42 @@ public class Game {
         if(data.size()>0) {
             for (String s : data) {
                 String[] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
-
                 String name = row[0];                           // ==> "Egon"
                 int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
-                Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
-                players.add(p);                       // placerer objektet i listen med kunder
+                registerPlayer(name, balance);
+
+                                      // placerer objektet i listen med kunder
             }
         }else{
-            TextUI ui = new TextUI();
-            String input = "";
-            while(players.size() < 6 ){
-                input = ui.getInput("Skriv navn på spiller: ");
-                Player p = new Player(input, 30000);
-                players.add(p);
-            }
+            runPlayerSetupDialog();
         }
         testCode();
         endGame();
     }
+
+    private void runPlayerSetupDialog() {
+
+        String input = "";
+        while(players.size() < 6 ){
+            input = ui.getInput("Skriv navn på spiller: ");
+            if(input.equalsIgnoreCase("Q")){
+                if(players.size()>1){
+                    break;
+                }else{
+                    input = ui.getInput("Skriv navn på spiller: ");
+                }
+            }
+         registerPlayer(input, 30000);
+        }
+    }
+
+    private void registerPlayer(String name, int balance) {
+
+
+        Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
+        players.add(p);
+    }
+
     public void endGame(){
         //Gemme ændringer (data persistence)
         io.savePlayerData(players);
@@ -55,8 +74,12 @@ public class Game {
         displayPlayers();
     }
     private void displayPlayers() {
+        String s ="\n";
         for (Player p:players) {
-            System.out.println(p);
+            //  s += p.toString();
+            s = s.concat(p.toString()+"\n");
         }
+
+        ui.displayMessage(s);
     }
 }
