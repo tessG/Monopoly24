@@ -19,7 +19,6 @@ public class Game {
 
                 String name = row[0];                           // ==> "Egon"
                 int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
-
                 Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
                 players.add(p);                       // placerer objektet i listen med kunder
             }
@@ -33,6 +32,7 @@ public class Game {
             }
         }
         testCode();
+        endGame();
     }
     public void endGame(){
         //Gemme ændringer (data persistence)
@@ -43,7 +43,7 @@ public class Game {
         Første player får 1000kr
         Sidste player får 2000 kr
          */
-        printPlayers();
+        displayPlayers();
         System.out.println("Første kunde får 1000kr");
         players.get(0).deposit(1000);
 
@@ -52,9 +52,9 @@ public class Game {
         lastCustomer.deposit(2000);
 
         System.out.println("\n Ny tilstand efter manipulation: ");
-        printPlayers();
+        displayPlayers();
     }
-    private void printPlayers() {
+    private void displayPlayers() {
         for (Player p:players) {
             System.out.println(p);
         }

@@ -5,19 +5,19 @@
 
 class Main
 class Game
-'package "util"{
+package "util"{
     class TextUI
     class FileIO
-'}
+}
 
-'package "model"{
+package "model"{
     class Player
     class Field
       class Dice
       class Account
       class CardDeck
       class Board
-'}
+}
 
 Main *-- Game
 Game *-- TextUI
