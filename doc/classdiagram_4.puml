@@ -47,10 +47,12 @@ Player  : + String toString()
 Player  : + int getBalance()
 Player : + String getName()
 '----new-----
-Player  : +int updatePosition(int diceValue)
+Player : +int updatePosition(int diceValue)
 Player : -boolean startPassed()
 Player : + boolean buyProperty(int amount)
 Player : + boolean payRent(int amount, Player recipient)
+Player : + void receive(int amount)
+
 '-----------
 Account :  - int balance
 Account  : + void withdraw(int amount)
