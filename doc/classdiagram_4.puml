@@ -16,6 +16,7 @@ package "model"{
       class Dice
       class Account
       class CardDeck
+       class Card
       class Board
 }
 
@@ -24,11 +25,12 @@ Game *-- TextUI
 Game *-- FileIO
 Game *-- Player
 Player *-- Account
+Player *-- Card
 Game *--Board
 Game *-- Dice
 Board *-- Field
 Board *-- CardDeck
-
+CardDeck *-- Card
 
 
 Main : + static void main(string [] args)
@@ -39,13 +41,13 @@ Player  : + Player(String, int)
 Player  : + String toString()
 Player  : + int getBalance()
 Player : + String getName()
-
 '-----------new:
 Player  : +int updatePosition(int diceValue)
 Player : -boolean startPassed()
 Player : + boolean buyProperty(int amount)
 Player : + boolean payRent(int amount, Player receiver)
-
+Player : - ArrayList<Card> cards
+Player : - ArrayList<Deed> deeds
 Account :  - int balance
 Account  : + void withdraw(int amount)
 Account  : + void deposit(int amount)
@@ -56,6 +58,9 @@ Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
 Game : - Player currentplayer
+Game : - CardDeck cardDeck
+Game : - Board board
+Game : - Dice dice
 Game : + Game(int maxPlayers, int minPlayers)
 Game : - void registerPlayer(String name, int amount)
 Game : + void setup()
@@ -75,7 +80,7 @@ TextUI : + void displayMessage(String msg)
 FileIO : - Scanner scanner
 FileIO : + ArrayList<Player> readPlayerData(String path)
 FileIO : + void savePlayerData(ArrayList<Player> players)
-FileIO : + String[] readBoardData(String path)
+FileIO : + String[] readBoardData(String path, int length)
 
 Field : - String label
 Field : - int ID
@@ -91,8 +96,6 @@ Field : # String onReject(Player p)
 
 
 Board : - Field[] fields
-Board : - CardDeck cardDeck
-Board : + Dice dice
 Board : + Board(String [] fields, String [] cards])
 Board : - void createFields(String [] data)
 Board : + Field getField(int id)

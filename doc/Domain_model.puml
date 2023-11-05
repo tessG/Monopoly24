@@ -1,9 +1,10 @@
 @startuml
-'https://plantuml.com/object-diagram
+'nyt: carddeck - card
 
 object Game
 object Player
 object Dice
+object CardDeck
 object Card
 object Board
 object Field
@@ -45,9 +46,9 @@ Field <|-- Visit
 
 Property <|-- Business
 Property <|-- Plot: is - a
-Board  *-- "100" Card
+Game  *-- "100" CardDeck
 Player *-- "0..10" Card
-
+CardDeck *-- Card
 
 
 
