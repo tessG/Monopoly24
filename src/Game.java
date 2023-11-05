@@ -25,7 +25,9 @@ public class Game {
         }else{
             runPlayerSetupDialog();
         }
-        testCode();
+        //testCode();
+
+        this.displayPlayers();
         endGame();
 
     }
@@ -73,7 +75,8 @@ public class Game {
         displayPlayers();
     }
     private void displayPlayers() {
-        String s ="\n";
+        String s ="\nGame status:\n";
+
         for (Player p:players) {
             //  s += p.toString();
             s = s.concat(p.toString()+"\n");

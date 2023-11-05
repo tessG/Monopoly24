@@ -106,6 +106,7 @@ Board : + Field getField(int id)
 
 CardDeck : - String[] carddata
 CardDeck : + CardDeck
+CardDeck : CardDeck(String[] carddata)
 CardDeck : + String getNext()
 
 Card : -String message
