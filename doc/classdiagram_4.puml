@@ -37,21 +37,25 @@ Main : + static void main(string [] args)
 
 Player  : - String name
 Player  : - int balance
-Player  : + Player(String, int)
+'---_new-----
+Player : - Account account
+Player : - ArrayList<Card> cards
+Player : - ArrayList<Deed> deeds
+'-----------
+Player  : + Player(String name, int Balance)
 Player  : + String toString()
 Player  : + int getBalance()
 Player : + String getName()
-'-----------new:
+'----new-----
 Player  : +int updatePosition(int diceValue)
 Player : -boolean startPassed()
 Player : + boolean buyProperty(int amount)
-Player : + boolean payRent(int amount, Player receiver)
-Player : - ArrayList<Card> cards
-Player : - ArrayList<Deed> deeds
+Player : + boolean payRent(int amount, Player recipient)
+'-----------
 Account :  - int balance
 Account  : + void withdraw(int amount)
 Account  : + void deposit(int amount)
-
+Account  : + int getBalance()
 
 Game : - ArrayList<Player> players
 Game : - int maxPlayers
@@ -103,6 +107,12 @@ Board : + Field getField(int id)
 CardDeck : - String[] carddata
 CardDeck : + CardDeck
 CardDeck : + String getNext()
+
+Card : -String message
+Card : -int income
+Card : -int cost
+Card : -int event
+Card : Card(String message, int income, int cost, String event)
 
 Dice : int rollDiceSum()
 @enduml
