@@ -115,7 +115,8 @@ Card : -String message
 Card : -int income
 Card : -int cost
 Card : -int event
-Card : Card(String message, int income, int cost, String event)
+Card : +Card(String message, int income, int cost, String event)
 
-Dice : int rollDiceSum()
+Dice : +boolean isDouble
+Dice : +int rollDiceSum()
 @enduml
