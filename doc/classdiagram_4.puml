@@ -107,8 +107,9 @@ Board : - void createFields(String [] data)
 Board : + Field getField(int id)
 
 CardDeck : - String[] carddata
+CardDeck : - ArrayList<Card> cards
 CardDeck : + CardDeck
-CardDeck : CardDeck(String[] carddata)
+CardDeck : + CardDeck(String[] carddata)
 CardDeck : + String getNext()
 
 Card : -String message
