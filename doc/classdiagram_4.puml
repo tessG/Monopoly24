@@ -43,15 +43,19 @@ Player : - ArrayList<Card> cards
 Player : - ArrayList<Deed> deeds
 '-----------
 Player  : + Player(String name, int Balance)
+Player : - int position
 Player  : + String toString()
 Player  : + int getBalance()
 Player : + String getName()
+Player : + int getPosition()
 '----new-----
-Player : +int updatePosition(int diceValue)
+Player  : +int updatePosition(int value)
 Player : -boolean startPassed()
-Player : + boolean buyProperty(int amount)
-Player : + boolean payRent(int amount, Player recipient)
-Player : + void receive(int amount)
+Player : + void buyProperty(int amount)
+Player : + void pay(int amount, Player recipient)
+Player : + void pay(int amount)
+Player : + void collect(int amount)
+Player : + void recieve(int amount)
 
 '-----------
 Account :  - int balance
@@ -59,12 +63,12 @@ Account  : + void withdraw(int amount)
 Account  : + void deposit(int amount)
 Account  : + int getBalance()
 
-Game : - ArrayList<Player> players
+Game : - static ArrayList<Player> players
 Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
 Game : - Player currentplayer
-Game : - CardDeck cardDeck
+Game : - static CardDeck cardDeck
 Game : - Board board
 Game : - Dice dice
 Game : + Game(int maxPlayers, int minPlayers)
@@ -76,7 +80,6 @@ Game : - void throwAndMove()
 Game : - void endGame()
 Game : - void displayPlayers()
 Game : - Player getPlayer(int i)
-Game : - ArrayList<Player> getPlayers()
 
 TextUI : + String getInput(String msg)
 TextUI : - Scanner scanner
