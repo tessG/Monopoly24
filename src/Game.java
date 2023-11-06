@@ -6,6 +6,8 @@ public class Game {
     TextUI ui = new TextUI();
     int maxPlayers;
 
+    Player currentPlayer;
+
     public Game(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
@@ -32,7 +34,8 @@ public class Game {
         //testCode();
 
         this.displayPlayers();
-        endGame();
+        this.runGameLoop();
+       this.endGame();
 
     }
 
@@ -57,6 +60,29 @@ public class Game {
         Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
         players.add(p);
     }
+
+    private void runGameLoop(){
+        int count = 0;
+
+        String  input = "Y";
+        while(input.equalsIgnoreCase("Y")){
+            currentPlayer = players.get(count);
+            throwAndMove();
+            input = ui.getInput("Fortsæt? Y/N");
+            count++;
+            if(count == players.size()){
+                count = 0;
+            }
+        }
+
+
+    }
+
+    private void throwAndMove() {
+        ui.displayMessage("Det er "+currentPlayer.getName()+"'s tur");
+
+    }
+
 
     public void endGame(){
         //Gemme ændringer (data persistence)

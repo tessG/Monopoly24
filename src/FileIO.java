@@ -33,7 +33,7 @@ public class FileIO {
         FileWriter writer = new FileWriter("src/data.txt");
         writer.write("Name,Balance" + "\n");
         for (Player c : players) {
-            String textTosave = c.name + "," + c.balance;
+            String textTosave = c.getName() + "," + c.balance;
             writer.write(textTosave + "\n");//Egon,5200
         }
         writer.close();

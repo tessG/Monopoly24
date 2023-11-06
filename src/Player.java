@@ -1,5 +1,5 @@
 public class Player {
-    String name;
+    private String name;
     int balance;
 
     public Player(String name, int balance){
@@ -15,5 +15,9 @@ public class Player {
     public void deposit(int amount){
         this.balance += amount;
 
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
