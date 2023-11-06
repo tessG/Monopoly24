@@ -15,12 +15,16 @@ public class Game {
 
         ArrayList<String> data = io.readPlayerData("src/data.txt");
         if(data.size()>0) {
-            for (String s : data) {
-                String[] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
-                String name = row[0];                           // ==> "Egon"
-                int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
-                registerPlayer(name, balance);
-                                      // placerer objektet i listen med kunder
+            if (ui.getInput("Fortsætte gemt spil? Y/N").equalsIgnoreCase("Y")) {
+                for (String s : data) {
+                    String[] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
+                    String name = row[0];                           // ==> "Egon"
+                    int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
+                    registerPlayer(name, balance);
+                    // placerer objektet i listen med kunder
+                }
+            }else{
+                runPlayerSetupDialog();
             }
         }else{
             runPlayerSetupDialog();
