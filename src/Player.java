@@ -11,9 +11,10 @@ public class Player {
 
     private int position;
 
-    public Player(String name, int balance){
+    public Player(String name, int balance, Account account){
         this.name = name;
         this.balance = balance;
+        this.account = account;
     }
 
     @Override
