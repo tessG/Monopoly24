@@ -2,10 +2,10 @@ public class Player {
     private String name;
     int balance;
 
-    public Player(String name, int balance, Account account){
+    public Player(String name, int balance){
         this.name = name;
         this.balance = balance;
-        this.account = account;
+        this.account = new Account();
     }
 
     @Override
