@@ -7,13 +7,25 @@ public class Game {
     int maxPlayers;
 
     Player currentPlayer;
-
+    CardDeck cardDeck;
+    Board board;
     public Game(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
 
     public void setup(){
         //Læse data ind
+        String[] carddata = io.readBoardData("data/carddata.csv", 15);
+        cardDeck = new CardDeck(carddata);
+
+
+        System.out.println(cardDeck.getNext().getMessage());
+
+        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
+        board = new Board(fielddata);
+
+        System.out.println(board.getField(40));
+
 
         ArrayList<String> data = io.readPlayerData("src/data.txt");
         if(data.size()>0) {
