@@ -12,7 +12,7 @@ public class Board {
         for (int i = 0; i < fields.length; i++) {
             String[] row = data[i].split(",");
             int id = Integer.parseInt(row[0]);
-            String option = row[1];
+            String fieldType = row[1].toLowerCase();
             String label = row[2];
             int cost = Integer.parseInt(row[3].trim());
             int income = Integer.parseInt(row[4].trim());
