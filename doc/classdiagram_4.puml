@@ -113,12 +113,12 @@ CardDeck : - String[] carddata
 CardDeck : - ArrayList<Card> cards
 CardDeck : + CardDeck
 CardDeck : + CardDeck(String[] carddata)
-CardDeck : + String getNext()
+CardDeck : + Card getNext()
 
 Card : -String message
 Card : -int income
 Card : -int cost
-Card : -int event
+Card : -String event
 Card : +Card(String message, int income, int cost, String event)
 
 Dice : +boolean isDouble

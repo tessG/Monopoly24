@@ -37,10 +37,51 @@ public class FileIO {
             writer.write(textTosave + "\n");//Egon,5200
         }
         writer.close();
-    } catch(
-            IOException e)
+    } catch(IOException e)
     {
         System.out.println("noget gik galt ved skrivning til fil");
     }
+
 }
+    public String[] readBoardData(String path, int length) {
+        int count = 0;
+        String[] data = new String[length];
+        File file = new File(path);
+        try {
+            Scanner scan = new Scanner(file);
+            scan.nextLine(); //Skip header
+            while (scan.hasNextLine()) {
+                String s = scan.nextLine();// Hele linjen vil stå i én string   ==>  "Egon, 200"
+                data[count] = s;
+                count++;
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("file not found");
+        }
+        return data;
+    }
+
+
+
+    /* String[] length;
+   public ArrayList<String> readBoardData(String path, int length) {
+        ArrayList<String> boardData = new ArrayList<>();
+
+        File file = new File(path);
+
+
+        try {
+            Scanner scan = new Scanner(file);
+            //scan.nextLine(); //Skip header
+            while (scan.hasNextLine()) {
+                String s = scan.nextLine();// Hele linjen vil stå i én string   ==>  "Egon, 200"
+                boardData.add(s);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("file not found");
+        }
+
+        return boardData;
+
+    }*/
 }
