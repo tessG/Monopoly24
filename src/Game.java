@@ -79,7 +79,23 @@ public class Game {
     }
 
     private void throwAndMove() {
+
         ui.displayMessage("Det er "+currentPlayer.getName()+"'s tur");
+        /**
+         * Kast terninger
+         * Vis hvad der blev slået
+         * opdater spillerens position på brættet
+         * Få fat i feltet spilleren er landet på
+         * *
+         */
+
+    }
+
+    private void landAndAct() {
+        /* Få fat i den besked spilleren skal se når han lander på et felt
+         * Vis beskeden og afvent spillerens svar
+         * modtag og send svaret til feltet
+         * vis spillerens saldo*/
 
     }
 
@@ -88,22 +104,7 @@ public class Game {
         //Gemme ændringer (data persistence)
         io.savePlayerData(players);
     }
-    private void testCode() {
-        /* Denne kode foretager nogle ændringer i player objekterne for at teste at data bliver gemt korrekt
-        Første player får 1000kr
-        Sidste player får 2000 kr
-         */
-        displayPlayers();
-        System.out.println("Første kunde får 1000kr");
-        players.get(0).deposit(1000);
 
-        System.out.println("\n Sidste kunde får 2000 kr");
-        Player lastCustomer = players.get(players.size()-1);
-        lastCustomer.deposit(2000);
-
-        System.out.println("\n Ny tilstand efter manipulation: ");
-        displayPlayers();
-    }
     private void displayPlayers() {
         String s ="\nGame status:\n";
 
