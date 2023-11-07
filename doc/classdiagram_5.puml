@@ -18,18 +18,18 @@ package "model"{
       class CardDeck
        class Card
       class Board
-      class Visit
-      class Tax
-      class Parking
-      class Start
-    class Chance
-    class Property
-    class Prison
-    class Plot
-    class Building
-    class Business
-    class ShippingLine
-    class Brewery
+          class Visit
+            class Tax
+            class Parking
+            class Start
+          class Chance
+          class Property
+          class Prison
+          class Plot
+          class Building
+          class Business
+          class ShippingLine
+          class Brewery
 }
 
 Main *-- Game
@@ -67,28 +67,32 @@ Player : - ArrayList<Card> cards
 Player : - ArrayList<Deed> deeds
 '-----------
 Player  : + Player(String name, int Balance)
+Player : - int position
 Player  : + String toString()
 Player  : + int getBalance()
 Player : + String getName()
+Player : + int getPosition()
 '----new-----
-Player : +int updatePosition(int diceValue)
+Player  : +int updatePosition(int value)
 Player : -boolean startPassed()
-Player : + boolean buyProperty(int amount)
-Player : + boolean payRent(int amount, Player recipient)
-Player : + void receive(int amount)
+Player : + void buyProperty(int amount)
+Player : + void pay(int amount, Player recipient)
+Player : + void pay(int amount)
+Player : + void collect(int amount)
+Player : + void recieve(int amount)
 
 '-----------
-Account  : - int balance
+Account :  - int balance
 Account  : + void withdraw(int amount)
 Account  : + void deposit(int amount)
 Account  : + int getBalance()
 
-Game : - ArrayList<Player> players
+Game : - static ArrayList<Player> players
 Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
 Game : - Player currentplayer
-Game : - CardDeck cardDeck
+Game : - static CardDeck cardDeck
 Game : - Board board
 Game : - Dice dice
 Game : + Game(int maxPlayers, int minPlayers)
@@ -100,7 +104,6 @@ Game : - void throwAndMove()
 Game : - void endGame()
 Game : - void displayPlayers()
 Game : - Player getPlayer(int i)
-Game : - ArrayList<Player> getPlayers()
 
 TextUI : + String getInput(String msg)
 TextUI : - Scanner scanner
@@ -132,7 +135,6 @@ Property : # String onAccept()
 Property : # String onReject()
 
 Plot : + String onLand(Player p)
-
 Business : + String onLand(Player p)
 Business : # String onAccept()
 Business : # String onReject()
@@ -151,14 +153,15 @@ Board : - void createFields(String [] data)
 Board : + Field getField(int id)
 
 CardDeck : - String[] carddata
+CardDeck : - ArrayList<Card> cards
 CardDeck : + CardDeck
-CardDeck : CardDeck(String[] carddata)
-CardDeck : + String getNext()
+CardDeck : + CardDeck(String[] carddata)
+CardDeck : + Card getNext()
 
 Card : -String message
 Card : -int income
 Card : -int cost
-Card : -int event
+Card : -String event
 Card : +Card(String message, int income, int cost, String event)
 
 Dice : +boolean isDouble
