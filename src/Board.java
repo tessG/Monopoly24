@@ -16,9 +16,27 @@ public class Board {
             String label = row[2];
             int cost = Integer.parseInt(row[3].trim());
             int income = Integer.parseInt(row[4].trim());
-            //int whatIsTessSmoking = Integer.parseInt(row[5]);
-            Field lmaoWtfIsGoingOn = new Field(id,label,cost,income);
-            fields[i] = lmaoWtfIsGoingOn;
+            int serieID = Integer.parseInt(row[5]);
+            Field f = null;
+            switch (Fieldtype) {
+                //case "Start": f = new Start(id, label, income, cost);
+                    //break;
+                case "Plot": f = new Plot(id, label, income, cost, serieID);
+                break;
+                //case "Chance": f = new Chance (id, label, income, cost);
+                //break;
+                //case "Tax": f = new Tax(id, label, income, cost);
+                //break;
+                case "Brewery": f = new Brewery(id, label, income, cost, serieID) ;
+                break;
+                case "ShippingLine": f = new ShippingLine(id, label, income, cost, serieID);
+                break;
+                //case "Parkering": f = new Parking(id, label, income, cost);
+                //break;
+                default: f = new Field(id,label,cost,income);
+                break;
+            }
+            fields[i] = f;
         }
     }
 
