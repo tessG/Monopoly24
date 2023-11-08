@@ -54,6 +54,8 @@ public class Player {
     }
 
     public void pay(int amount,Player recipient){
+        this.account.withdraw(amount);
+        recipient.recieve(amount);
     }
     public void pay(int amount){
 
@@ -66,5 +68,7 @@ public class Player {
     public void recieve(int amount){
 
     }
+
+
 }
 
