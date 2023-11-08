@@ -32,6 +32,9 @@ public class Field {
     }
 
     protected String onReject(Player p){
-        return null;
+        int s = p.account.getbalance() * 0.1;
+        p.pay(s);
+        String msg = "10 procent af din saldo beregnet";
+        return msg;
     }
 }

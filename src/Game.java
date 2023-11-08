@@ -15,8 +15,7 @@ public class Game {
 
     public void setup(){
         //Læse data ind
-        String[] carddata = io.readBoardData("data/carddata.csv", 15);
-        cardDeck = new CardDeck(carddata);
+
 
 
         System.out.println(cardDeck.getNext().getMessage());

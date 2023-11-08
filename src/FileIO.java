@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileIO {
+public class FileIO{
 
        public ArrayList<String> readPlayerData(String path) {
         ArrayList<String> data = new ArrayList<>();
@@ -43,10 +43,10 @@ public class FileIO {
     }
 
 }
-    public String[] readBoardData(String path, int length) {
+    public static String[] readBoardData(String path, int length) {
         int count = 0;
-        String[] data = new String[length];
-        File file = new File(path);
+        String[] data = new String[41];
+        File file = new File("src/Boarddata.txt");
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine(); //Skip header
