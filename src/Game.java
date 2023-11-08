@@ -117,7 +117,12 @@ public class Game {
          * modtag og send svaret til feltet
          * vis spillerens saldo*/
         String msg = f.onLand(currentPlayer);
+
+        
         ui.displayMessage(msg);
+
+
+
     }
 
 

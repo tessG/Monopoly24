@@ -13,7 +13,6 @@ public class Player {
 
     public Player(String name, int balance){
         this.name = name;
-
         this.account = new Account();
         this.account.deposit(balance);
     }

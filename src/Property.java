@@ -14,6 +14,8 @@ public class Property extends Field{
 
     @Override
     public String onLand(Player p){
+
+
     return super.onLand(p);
     }
 
