@@ -2,11 +2,11 @@
 public class Field {
     private String label;
     private int ID;
-    private int cost;
-    private int income;
-    private String option;
+    protected int cost;
+    protected int income;
+    protected String option;
 
-    public Field (  int ID, String label, int cost, int income){
+    public Field(int ID, String label, int cost, int income) {
         this.label = label;
         this.ID = ID;
         this.cost = cost;
@@ -18,20 +18,24 @@ public class Field {
         return ID + label;
     }
 
-    public String onLand(Player p){
+    public String onLand(Player p) {
         String s = p.getName() + " er landet på " + this;
         return s;
     }
 
-    public String processResponse(Player p){
+    public void processResponse(String response, Player p) {
+        if (response.equalsIgnoreCase("Y")) {
+            onAccept(p);
+        } else if (response.equalsIgnoreCase("N")) {
+            onReject(p);
+        }
+    }
+
+    protected String onAccept(Player p) {
         return null;
     }
 
-    protected String onAccept(Player p){
-        return null;
-    }
-
-    protected String onReject(Player p){
+    protected String onReject(Player p) {
         return null;
     }
 }
