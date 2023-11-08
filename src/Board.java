@@ -21,28 +21,28 @@ public class Board {
 
             switch (fieldType) {
                 case "start":
-                    //f = new Start(id, label, cost, income);
+                    f = new Start(id, label, cost, income);
                     break;
                 case "plot":
                     f = new Plot(id, label, cost, income, Integer.parseInt(serieID));
                     break;
                 case "chance":
-                    //f = new Chance(id, label, cost, income);
+                    f = new Chance(id, label, cost, income);
                     break;
                 case "tax":
-                    //f = new Tax(id, label, cost, income);
+                    f = new Tax(id, label, cost, income);
                     break;
                 case "shippingline":
                     f = new ShippingLine(id, label, cost, income, Integer.parseInt(serieID));
                     break;
                 case "parking":
-                    //f = new Parking (id,label,cost,income);
+                    f = new Parking (id,label,cost,income);
                     break;
                 case "brewery":
                     f = new Brewery(id, label, cost, income, Integer.parseInt(serieID));
                     break;
                 case "prison":
-                    //f = new Prison (id, labe cost, income);
+                    f = new Prison (id, label, cost, income);
                     break;
                 default:
                     f = new Field(id, label, cost, income);
