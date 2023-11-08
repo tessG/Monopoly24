@@ -38,5 +38,7 @@ public class Field  {
         p.pay(s);
         String msg = "10 procent af din saldo beregnet";
         return msg;
+
+
     }
 }
