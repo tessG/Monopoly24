@@ -7,11 +7,11 @@ public class Player {
     private Account account;
     private ArrayList<Card> cards;
 
-  //  private ArrayList<Deed> deeds;
+    //  private ArrayList<Deed> deeds;
 
     private int position;
 
-    public Player(String name, int balance){
+    public Player(String name, int balance) {
         this.name = name;
 
         this.account = new Account();
@@ -20,9 +20,8 @@ public class Player {
 
     @Override
     public String toString() {
-        return  name + ": " + this.getBalance();
+        return name + ": " + this.getBalance();
     }
-
 
 
     public String getName() {
@@ -37,10 +36,9 @@ public class Player {
         return position;
     }
 
-    public int updatePosition(int value){
+    public int updatePosition(int value) {
         int newPosition = this.position + value;
-        if (newPosition > 40)
-        {
+        if (newPosition > 40) {
             // Field startField = board.getField(1);
             // this.recieve(startField.getIncome());
             newPosition -= 40;
@@ -49,22 +47,24 @@ public class Player {
 
     }
 
-    public void buyProperty(int amount){
+    public void buyProperty(int amount) {
         this.account.withdraw(amount);
     }
 
-    public void pay(int amount,Player recipient){
+    public void pay(int amount, Player recipient) {
+        this.account.withdraw(amount);
+        recipient.recieve(amount);
     }
-    public void pay(int amount){
 
+    public void pay(int amount) {
+        this.account.withdraw(amount);
     }
 
     public void collect(int amount){
 
     }
 
-    public void recieve(int amount){
-
+    public void recieve(int amount) {
+        this.account.deposit(amount);
     }
 }
-

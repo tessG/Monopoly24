@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Player> players = new ArrayList<>();
+    public static ArrayList<Player> players = new ArrayList<>();
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
     private int maxPlayers;
