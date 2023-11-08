@@ -3,12 +3,13 @@ public class Property extends Field{
 
 
 
-    public Property( int ID, String label, int cost, int income, int serieID) {
-        super( ID, label, cost, income);
+    public Property(int ID, String label, int cost, int income, int serieID) {
+        super(ID, label, cost, income);
         this.serieID = serieID;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return super.toString() + serieID;
     }
 
@@ -23,7 +24,7 @@ public class Property extends Field{
     }
 
     @Override
-    protected String onReject(Player p){
-    return "";
+    protected String onReject(Player p) {
+        return "";
     }
 }
