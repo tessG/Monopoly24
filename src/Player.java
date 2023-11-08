@@ -18,6 +18,8 @@ public class Player {
         this.account.deposit(balance);
     }
 
+
+
     @Override
     public String toString() {
         return  name + ": " + this.getBalance();
