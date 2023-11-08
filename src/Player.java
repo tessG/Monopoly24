@@ -2,37 +2,35 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    int balance;
+
 
     private Account account;
     private ArrayList<Card> cards;
 
-    private ArrayList<Deed> deeds;
+  //  private ArrayList<Deed> deeds;
 
     private int position;
 
-    public Player(String name, int balance, Account account){
+    public Player(String name, int balance){
         this.name = name;
-        this.balance = balance;
-        this.account = account;
+
+        this.account = new Account();
+        this.account.deposit(balance);
     }
 
     @Override
     public String toString() {
-        return  name + ": " + balance;
+        return  name + ": " + this.getBalance();
     }
 
-    public void deposit(int amount){
-        this.balance += amount;
 
-    }
 
     public String getName() {
         return this.name;
     }
 
     public int getBalance() {
-        return balance;
+        return this.account.getBalance();
     }
 
     public int getPosition() {
@@ -52,6 +50,7 @@ public class Player {
     }
 
     public void buyProperty(int amount){
+        this.account.withdraw(amount);
     }
 
     public void pay(int amount,Player recipient){

@@ -17,8 +17,8 @@ public class Board {
             int cost = Integer.parseInt(row[3].trim());
             int income = Integer.parseInt(row[4].trim());
             //int whatIsTessSmoking = Integer.parseInt(row[5]);
-            Field lmaoWtfIsGoingOn = new Field(id,label,cost,income);
-            fields[i] = lmaoWtfIsGoingOn;
+            Field f = new Field(id,label,cost,income);
+            fields[i] = f;
         }
     }
 
