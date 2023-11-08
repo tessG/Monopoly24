@@ -1,5 +1,5 @@
 
-public class Field {
+public class Field  {
     private String label;
     private int ID;
     private int cost;
@@ -28,7 +28,9 @@ public class Field {
     }
 
     protected String onAccept(Player p){
-        return null;
+        p.pay(cost);
+        String s = "Det er sket";
+        return s;
     }
 
     protected String onReject(Player p){

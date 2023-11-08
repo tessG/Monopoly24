@@ -12,16 +12,13 @@ public class Player {
     public Player(String name, int balance){
         this.name = name;
         this.balance = balance;
+        this.account = new Account();
+
     }
 
     @Override
     public String toString() {
         return  name + ": " + balance;
-    }
-
-    public void deposit(int amount){
-        this.balance += amount;
-
     }
 
     public String getName() {

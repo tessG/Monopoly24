@@ -14,6 +14,11 @@ public class Game {
     }
 
     public void setup(){
+
+        String[] carddata =io.readBoardData("data/carddata",100);
+        cardDeck = new CardDeck(carddata);
+        String[] boarddata = io.readBoardData("data/Boarddata",40);
+        board = new Board(boarddata);
         //Læse data ind
 
 
