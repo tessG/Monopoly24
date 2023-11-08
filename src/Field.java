@@ -23,8 +23,14 @@ public class Field {
         return s;
     }
 
-    public String processResponse(Player p){
-        return null;
+    public String processResponse(String response, Player p){
+        String msg = "";
+        if(response.equalsIgnoreCase("y")){
+            msg = onAccept(p);
+        } else if(response.equalsIgnoreCase("n")){
+            msg = onReject(p);
+        }
+        return msg;
     }
 
     protected String onAccept(Player p){
@@ -35,11 +41,5 @@ public class Field {
         return null;
     }
 
-    public void processResponse(String response, Player p){
-        if(response.equalsIgnoreCase("y")){
-            onAccept(p);
-        } else if(response.equalsIgnoreCase("n")){
-            onReject(p);
-        }
-    }
+
 }
