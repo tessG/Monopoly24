@@ -1,0 +1,18 @@
+@startuml
+
+participant Main as main
+
+participant Game as game
+
+participant Player as player
+
+main -> game : runGameLoop()
+loop !quitgame
+game -> game : currentPlayer = players[count]
+game -> game : throwAndMove()
+
+end
+
+
+
+@enduml

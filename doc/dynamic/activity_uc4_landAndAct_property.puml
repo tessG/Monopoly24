@@ -10,10 +10,9 @@ If "Someone owns the property?" then
     else
     --> [No] "Auction"
     Endif
-
-else
+    else
 --> [Yes] " OPTION: Pay rent ? "
-     If "Accept?" then
+    If "Accept?" then
     --> [yes] "Pay"
     else
         --> [No] "You have been removed from this game"
