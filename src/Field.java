@@ -2,8 +2,8 @@
 public class Field {
     private String label;
     private int ID;
-    private int cost;
-    private int income;
+    public int cost;
+    public int income;
     private String option;
 
     public Field (  int ID, String label, int cost, int income){
@@ -33,5 +33,13 @@ public class Field {
 
     protected String onReject(Player p){
         return null;
+    }
+
+    public void processResponse(String response, Player p){
+        if(response.equalsIgnoreCase("y")){
+            onAccept(p);
+        } else if(response.equalsIgnoreCase("n")){
+            onReject(p);
+        }
     }
 }
