@@ -79,7 +79,7 @@ Player : + void buyProperty(int amount)
 Player : + void pay(int amount, Player recipient)
 Player : + void pay(int amount)
 Player : + void collect(int amount)
-Player : + void recieve(int amount)
+Player : + void receive(int amount)
 
 '-----------
 Account :  - int balance
