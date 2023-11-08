@@ -28,8 +28,14 @@ public class Property extends Field {
     }
 
     @Override
-    protected String onAccept(Player p){
-    return "";
+    protected String onAccept(Player p) {
+        if (option.equalsIgnoreCase("buy")) {
+            p.buyProperty(cost);
+            owner = p;
+        } else if (option.equalsIgnoreCase("payRent")) {
+            p.pay(income, owner);
+        }
+        return "";
     }
 
     @Override
