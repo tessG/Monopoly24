@@ -1,0 +1,135 @@
+@startuml
+'Domænemodellen giver nye entity klasser
+'Pakker, model og util
+
+
+class Main
+class Game
+package "util"{
+    class TextUI
+    class FileIO
+}
+
+package "model"{
+    class Player
+    class Field
+      class Dice
+      class Account
+      class CardDeck
+       class Card
+      class Board
+      class Property
+      class Brewery
+      class ShipingLine
+}
+
+Main *-- Game
+Game *-- TextUI
+Game *-- FileIO
+Game *-- Player
+Player *-- Account
+Player *-- Card
+Game *--Board
+Game *-- Dice
+Board *-- Field
+Board *-- CardDeck
+CardDeck *-- Card
+Field <|-- Property
+Property <|-- Brewery
+Property <|-- ShipingLine
+Main : + static void main(string [] args)
+
+Player  : - String name
+Player  : - int balance
+'---_new-----
+Player : - Account account
+Player : - ArrayList<Card> cards
+Player : - ArrayList<Deed> deeds
+'-----------
+Player  : + Player(String name, int Balance)
+Player  : + String toString()
+Player  : + int getBalance()
+Player : + String getName()
+'----new-----
+Player : +int updatePosition(int diceValue)
+Player : -boolean startPassed()
+Player : + boolean buyProperty(int amount)
+Player : + boolean payRent(int amount, Player recipient)
+Player : + void receive(int amount)
+
+'-----------
+Account :  - int balance
+Account  : + void withdraw(int amount)
+Account  : + void deposit(int amount)
+Account  : + int getBalance()
+
+Game : - ArrayList<Player> players
+Game : - int maxPlayers
+Game : - TextUI ui
+Game : - FileIO io
+Game : - Player currentplayer
+Game : - CardDeck cardDeck
+Game : - Board board
+Game : - Dice dice
+Game : + Game(int maxPlayers, int minPlayers)
+Game : - void registerPlayer(String name, int amount)
+Game : + void setup()
+Game : - void runPlayerSetupDialog();
+Game : - void runGameLoop()
+Game : - void throwAndMove()
+Game : - void endGame()
+Game : - void displayPlayers()
+Game : - Player getPlayer(int i)
+Game : - ArrayList<Player> getPlayers()
+
+TextUI : + String getInput(String msg)
+TextUI : - Scanner scanner
+TextUI : + void displayMessage(String msg)
+
+
+FileIO : - Scanner scanner
+FileIO : + ArrayList<Player> readPlayerData(String path)
+FileIO : + void savePlayerData(ArrayList<Player> players)
+FileIO : + String[] readBoardData(String path, int length)
+
+Field : - String label
+Field : - int ID
+Field : - int cost
+Field : - int income
+Field : - String option
+Field : + Field(ID, label, cost, income)
+Field : + String toString()
+Field : + String onLand(Player p)
+Field : + String processResponse(Player p)
+Field : # String onAccept(Player p)
+Field : # String onReject(Player p)
+
+
+Board : - Field[] fields
+Board : + Board(String [] fields, String [] cards])
+Board : - void createFields(String [] data)
+Board : + Field getField(int id)
+
+CardDeck : - String[] carddata
+CardDeck : + CardDeck
+CardDeck : CardDeck(String[] carddata)
+CardDeck : + String getNext()
+
+Card : -String message
+Card : -int income
+Card : -int cost
+Card : -int event
+Card : +Card(String message, int income, int cost, String event)
+
+Dice : +boolean isDouble
+Dice : +int rollDiceSum()
+
+Property : -String serieID
+Property : +String toString()
+Property : +String onLand(Player p)
+Property : #String onAccept(Player p)
+Property : #String onReject(Player p)
+
+Brewery : +onLand(Player p)
+ShipingLine : +onLand(Player )
+@enduml

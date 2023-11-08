@@ -12,4 +12,7 @@ public class Plot extends Property
 
         return super.onLand(p);
     }
+
+
+
 }
