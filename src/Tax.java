@@ -3,9 +3,6 @@ public class Tax extends Field{
         super(ID, label, cost, income);
     }
 
-
-
-
     @Override
     protected String onAccept(Player p){
         p.pay(cost);

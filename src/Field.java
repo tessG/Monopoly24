@@ -18,7 +18,7 @@ public class Field {
         return ID + label;
     }
 
-    public String onLand(Player p){
+    protected String onLand(Player p){
         String s = p.getName() + " er landet på " + this;
         return s;
     }
