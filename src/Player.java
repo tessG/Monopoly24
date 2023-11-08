@@ -7,7 +7,7 @@ public class Player {
     private Account account;
     private ArrayList<Card> cards;
 
-  //  private ArrayList<Deed> deeds;
+    //  private ArrayList<Deed> deeds;
 
     private int position;
 
@@ -54,17 +54,29 @@ public class Player {
     }
 
     public void pay(int amount,Player recipient){
+
+        this.account.withdraw(amount);
+        recipient.recieve(amount);
+
     }
     public void pay(int amount){
+        this.account.withdraw(amount);
 
     }
 
     public void collect(int amount){
 
+        for (Player p: Game.players) {
+            p.pay(amount, this);
+
+        }
+
     }
 
     public void recieve(int amount){
+        this.account.deposit(amount);
 
     }
 }
+
 
