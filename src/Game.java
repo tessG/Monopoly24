@@ -2,15 +2,16 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
-    FileIO io = new FileIO();
-    TextUI ui = new TextUI();
-    int maxPlayers;
-
-    Player currentPlayer;
-    CardDeck cardDeck;
-    Board board;
+    private FileIO io = new FileIO();
+    private TextUI ui = new TextUI();
+    private int maxPlayers;
+    private Player currentPlayer;
+    public static CardDeck cardDeck;
+    private Board board;
+    private Dice dice;
     public Game(int maxPlayers) {
         this.maxPlayers = maxPlayers;
+        dice = new Dice();
     }
 
     public void setup(){
@@ -100,15 +101,23 @@ public class Game {
          * Få fat i feltet spilleren er landet på
          * *
          */
+        int result = dice.rollDiceSum();
+        int newPosition = currentPlayer.updatePosition(result);
+
+        Field f = board.getField(newPosition);
+
+   landAndAct(f);
+
 
     }
 
-    private void landAndAct() {
+    private void landAndAct(Field f) {
         /* Få fat i den besked spilleren skal se når han lander på et felt
          * Vis beskeden og afvent spillerens svar
          * modtag og send svaret til feltet
          * vis spillerens saldo*/
-
+        String msg = f.onLand(currentPlayer);
+        ui.displayMessage(msg);
     }
 
 

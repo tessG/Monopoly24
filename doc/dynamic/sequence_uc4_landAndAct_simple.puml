@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant Game as game
+participant TextUI as ui
+participant Field  as field
+participant Player as player
+
+game -> game : landAndAct(f)
+game -> field : String msg = f.onLand(player)
+'alt owner == null
+'field -> field : option = "buy"
+'else if owner != player
+'field -> field : option = "payRent"
+'end
+field --> game : "Vil du købe Valbylanggade?"
+game -> ui : String response = getInput( msg )
+ui --> game : "Y"
+game -> field : String msg = f.processesResponse(player, response )
+alt response "Y"
+    field -> field : onAccept(player)
+    field -> player: buyProperty(this.cost)
+else response "N"
+    field -> field : onReject(player)
+    end
+field --> game : "Egon købte Valbylanggade"
+game -> ui : displayMessage( msg )
+
+@enduml
