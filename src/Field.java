@@ -1,5 +1,5 @@
 
-public class Field {
+public class Field  {
     private String label;
     private int ID;
     private int cost;
@@ -28,10 +28,15 @@ public class Field {
     }
 
     protected String onAccept(Player p){
-        return null;
+        p.pay(cost);
+        String s = "Det er sket";
+        return s;
     }
 
     protected String onReject(Player p){
-        return null;
+        int s = p.account.getbalance() * 0.1;
+        p.pay(s);
+        String msg = "10 procent af din saldo beregnet";
+        return msg;
     }
 }
