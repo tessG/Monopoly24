@@ -2,13 +2,12 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
-    FileIO io = new FileIO();
-    TextUI ui = new TextUI();
-    int maxPlayers;
-
-    Player currentPlayer;
-    CardDeck cardDeck;
-    Board board;
+    private FileIO io = new FileIO();
+    private TextUI ui = new TextUI();
+    private int maxPlayers;
+    private Player currentPlayer;
+    public static CardDeck cardDeck;
+    private Board board;
     public Game(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
