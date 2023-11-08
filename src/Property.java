@@ -31,6 +31,7 @@ public class Property extends Field{
     protected String onAccept(Player p){
         if(option.equals("buy")){
             p.buyProperty(cost);
+            owner = p;
         }else if(option.equals(("payRent"))){
             p.pay(income,owner);
         }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class FileIO {
 
        public ArrayList<String> readPlayerData(String path) {

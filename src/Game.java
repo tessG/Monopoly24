@@ -16,7 +16,7 @@ public class Game {
 
     public void setup(){
         //Læse data ind
-        String[] carddata = io.readBoardData("data/carddata.csv", 15);
+        String[] carddata = io.readBoardData("data/carddata.csv", 16);
         cardDeck = new CardDeck(carddata);
 
 
@@ -118,7 +118,8 @@ public class Game {
          * vis spillerens saldo*/
         String msg = f.onLand(currentPlayer);
         String response = ui.getInput(msg);
-        f.processResponse(response, currentPlayer);
+
+        msg = f.processResponse(response, currentPlayer);
 
 
 

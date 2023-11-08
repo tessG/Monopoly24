@@ -4,7 +4,7 @@ public class Field {
     private int ID;
     public int cost;
     public int income;
-    private String option;
+    protected String option;
 
     public Field (  int ID, String label, int cost, int income){
         this.label = label;
