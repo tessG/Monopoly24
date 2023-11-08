@@ -1,4 +1,5 @@
 Message, Income, Cost, Event
+De har kørt frem for "fuldt stop" betal 1.000 kr. i bøde, 0, -1000, payment
 Ryk frem til start, 0, 0, 1
 Gå i fængsel. Ryk direkte til fængslet. Selv om de passerer "START" indkasserer De ikke kr. 4000, 0, 0, 11
 De har kørt frem for "fuldt stop" betal 1.000 kr. i bøde, 0, -1000, payment
