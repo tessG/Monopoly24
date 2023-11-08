@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Board {
     private Field[] fields;
     private String[] data;
@@ -9,6 +11,7 @@ public class Board {
     }
 
     private void createFields(String[] data){
+        ArrayList<Field>properties = new ArrayList<>();
         for (int i = 0; i < fields.length; i++) {
             String[] row = data[i].split(",");
             int id = Integer.parseInt(row[0]);

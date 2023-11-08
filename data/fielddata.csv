@@ -2,7 +2,7 @@ ID, FieldType, Label, Cost, Income, SeriesID.
 1, Start, Start, 0, 4000, N/A
 2, Plot, Rødovrevej, 1200, 50, 1
 3, Chance, Chance, 0, 0, N/A
-4, plot, Hvidovrevej, 1200, 50, 1.
+4, Plot, Hvidovrevej, 1200, 50, 1.
 5, Tax, Tax, 4000, 0, N/A
 6, ShippingLine, Helsingør-Helsingborg, 4000, 500,2
 7, Plot, Roskildevej, 1200, 100, 3
@@ -12,7 +12,7 @@ ID, FieldType, Label, Cost, Income, SeriesID.
 11, Chance, Chance, 0, 0, N/A
 12, plot, Frederiksberg Allé, 2800, 200, 4
 13, Brewery, TuborgSquash, 3000, 0,5
-14, plot, Bülowsvej, 2800, 200, 4
+14, Plot, Bülowsvej, 2800, 200, 4
 15, Plot, GL.Kongevej, 3200, 250, 4
 16, ShippingLine, Mols-Linien, 4000, 500, 2
 17, Plot, Bernstorffsvej, 3600, 300, 6
