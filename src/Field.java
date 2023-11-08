@@ -27,18 +27,5 @@ public class Field  {
         return null;
     }
 
-    protected String onAccept(Player p){
-        p.pay(cost);
-        String s = "Det er sket";
-        return s;
-    }
 
-    protected String onReject(Player p){
-        int s = p.account.getbalance() * 0.1;
-        p.pay(s);
-        String msg = "10 procent af din saldo beregnet";
-        return msg;
-
-
-    }
 }
