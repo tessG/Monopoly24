@@ -1,5 +1,5 @@
 ```plantuml:UC3sekvensdiagram
-@startuml UC3sekvensdiagram
+@startuml
 
 Main -> Game: setup
 Game -> FileIO: String[] data = readBoardData("fields.csv")
