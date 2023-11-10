@@ -9,13 +9,5 @@ public class Business extends Property{
         return super.onLand(p);
     }
 
-    @Override
-    protected String onAccept(Player p){
-        return "";
-    }
 
-    @Override
-    protected String onReject(Player p){
-        return "";
-    }
 }

@@ -6,17 +6,12 @@ public class ShippingLine extends Business{
 
     @Override
     public String onLand(Player p){
+
         return super.onLand(p);
     }
 
-    @Override
-    protected String onAccept(Player p){
-        return "";
-    }
 
-    @Override
-    protected String onReject(Player p){
-        return "";
-    }
+
+
 }
 

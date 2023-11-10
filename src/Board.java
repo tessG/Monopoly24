@@ -12,7 +12,7 @@ public class Board {
         for (int i = 0; i < fields.length; i++) {
             String[] row = data[i].split(",");
             int id = Integer.parseInt(row[0]);
-            String fieldType = row[1].toLowerCase();
+            String fieldType = row[1].trim().toLowerCase();
             String label = row[2];
             int cost = Integer.parseInt(row[3].trim());
             int income = Integer.parseInt(row[4].trim());
@@ -45,6 +45,7 @@ public class Board {
                     f = new Prison (id, label, cost, income);
                     break;
                 default:
+                    //smid en exception
                     f = new Field(id, label, cost, income);
             }
 

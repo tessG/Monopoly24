@@ -17,12 +17,12 @@ public class Property extends Field{
     @Override
     public String onLand(Player p){
     String msg =  super.onLand(p);
-    if(owner.equals(null)){
+    if(owner==null){
         option = "buy";
-        msg=msg.concat("Vil du købe?(Y/N:");
+        msg = msg.concat("\n Vil du købe?(Y/N): ");
     } else {
         option = "payRent";
-        msg=msg.concat("Du skal betale" + income + "Tasty Y for at acceptere");
+        msg=msg.concat("\n Du skal betale" + income + "Tasty Y for at acceptere");
     }
     return msg;
     }
@@ -31,6 +31,7 @@ public class Property extends Field{
     protected String onAccept(Player p){
         if(option.equals("buy")){
             p.buyProperty(cost);
+
             owner = p;
         }else if(option.equals(("payRent"))){
             p.pay(income,owner);

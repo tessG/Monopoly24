@@ -13,7 +13,7 @@ public class Chance extends Field{
         this.cost = card.getIncome();
         this.income = card.getIncome();
         this.option = card.getEvent();
-        s += "\n Træk et kort fra bunken: "+card.getMessage();
+        s += "\n Træk et kort fra bunken: "+card.getMessage()+"Tast Y for at fortsætte";
         return s;
     }
 
@@ -28,7 +28,7 @@ public class Chance extends Field{
             System.out.println("Du modtager :"+cost+",-");
         }
         else if (option.equalsIgnoreCase("1")) {
-            p.updatePosition(40-p.getPosition());
+            p.updatePosition(41-p.getPosition());
         }
         return "";
     }

@@ -19,14 +19,12 @@ public class Game {
         String[] carddata = io.readBoardData("data/carddata.csv", 16);
         cardDeck = new CardDeck(carddata);
 
-
-        System.out.println(cardDeck.getNext().getMessage());
+      //  System.out.println(cardDeck.getNext().getMessage());
 
         String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
         board = new Board(fielddata);
 
-        System.out.println(board.getField(40));
-
+      //  System.out.println(board.getField(40));
 
         ArrayList<String> data = io.readPlayerData("src/data.txt");
         if(data.size()>0) {
@@ -101,7 +99,7 @@ public class Game {
          * Få fat i feltet spilleren er landet på
          * *
          */
-        int result = dice.rollDiceSum();
+        int result = 6;//dice.rollDiceSum();
         int newPosition = currentPlayer.updatePosition(result);
 
         Field f = board.getField(newPosition);
@@ -124,7 +122,7 @@ public class Game {
 
 
         ui.displayMessage(msg);
-
+      ui.displayMessage(currentPlayer.toString());
 
 
     }
