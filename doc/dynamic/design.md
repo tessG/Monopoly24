@@ -20,6 +20,6 @@ CardDeck -> Card : new (message, income, cost, event)
 end
 
 @enduml
-
+```
 
 ![](./UC3sekvensdiagram.svg)
