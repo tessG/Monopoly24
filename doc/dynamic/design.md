@@ -22,4 +22,4 @@ end
 @enduml
 ```
 
-![](./UC3sekvensdiagram.svg)
+![](UC3sekvensdiagram.svg)
