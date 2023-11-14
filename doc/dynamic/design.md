@@ -1,6 +1,6 @@
-```plantuml:UC3sekvensdiagram
-@startuml UC3sekvensdiagram
-
+plantuml:UC3sekvensdiagram
+```
+@startuml
 Main -> Game: setup
 Game -> FileIO: String[] data = readBoardData("fields.csv")
 
@@ -18,8 +18,7 @@ CardDeck -> CardDeck : createCards(data)
 loop data.length
 CardDeck -> Card : new (message, income, cost, event)
 end
-
 @enduml
+```
 
-
-![](./UC3sekvensdiagram.svg)
+![](UC3sekvensdiagram.svg)
