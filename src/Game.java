@@ -1,146 +1,106 @@
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Player> players = new ArrayList<>();
-    private FileIO io = new FileIO();
-    private TextUI ui = new TextUI();
-    private int maxPlayers;
+ private String name;
+ private ArrayList<Player> players;
+ private ArrayList<String> listOfActions;
+ private TextUI ui = new TextUI();;
+ private FileIO io = new FileIO();
+ private String playerDataPath = "data/playerData.csv";
+
+
+
+
     private Player currentPlayer;
-    public static CardDeck cardDeck;
-    private Board board;
-    private Dice dice;
-    public Game(int maxPlayers) {
-        this.maxPlayers = maxPlayers;
-        dice = new Dice();
+
+    public Game(String name){
+        this.name = name;
+        players = new ArrayList<>();
+        listOfActions = new ArrayList<>();
+        listOfActions.add("1) start new game");
+        listOfActions.add("2) continue game");
+        listOfActions.add("3) quit game");
+
+    }
+    public void createPlayer(String name, int balance){
+        if(name == null) {
+            name = ui.promptText("Spillerens navn: ");
+        }
+        currentPlayer =  new Player(name, balance);
+        this.players.add(currentPlayer);
+    }
+    public void runDialog(){
+        ui.displayMsg("Velkommen til "+this.name);
+        int action = 0;
+
+        while(action != listOfActions.size()){// the quit action is the last action
+         action = ui.promptChoice(listOfActions, "Vælg en af følgende:");
+
+         switch(action){
+             case 1:
+                 //start new game
+
+                    this.registerPlayers();
+                    this.runGameLoop();
+                  break;
+              case 2:
+                  // Continue game
+                  displayPlayers();
+                  this.loadPlayerData();
+                  this.runGameLoop();
+                  break;
+
+         }
+        // Main.saveData(this.players);
+        }
+
+
+
+
     }
 
-    public void setup(){
-        //Læse data ind
-        String[] carddata = io.readBoardData("data/carddata.csv", 16);
-        cardDeck = new CardDeck(carddata);
+    private void loadPlayerData() {
+        ArrayList<String> data = io.readPlayerData(playerDataPath);  //"Tess, 2000"
 
-      //  System.out.println(cardDeck.getNext().getMessage());
-
-        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
-        board = new Board(fielddata);
-
-      //  System.out.println(board.getField(40));
-
-        ArrayList<String> data = io.readPlayerData("src/data.txt");
-        if(data.size()>0) {
-            if (ui.getInput("Fortsætte gemt spil? Y/N").equalsIgnoreCase("Y")) {
-                for (String s : data) {
-                    String[] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
-                    String name = row[0];                           // ==> "Egon"
-                    int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
-                    registerPlayer(name, balance);
-                    // placerer objektet i listen med kunder
-                }
-            }else{
-                runPlayerSetupDialog();
+        if(data.size()>0){
+            for (String s:data) {
+                String[] values = s.split(",");//"Tess, 2000" == ["Tess", " 2000"]
+                int balance = Integer.parseInt(values[1].trim());
+                 String name = values[0];
+                 createPlayer(name, balance);
             }
+
         }else{
-            runPlayerSetupDialog();
+            registerPlayers();
         }
-        //testCode();
-
-        this.displayPlayers();
-        this.runGameLoop();
-       this.endGame();
-
     }
 
-    private void runPlayerSetupDialog() {
-
-        String input = "";
-        while(players.size() < 6 ){
-            input = ui.getInput("Skriv navn på spiller: ");
-            if(input.equalsIgnoreCase("Q")){
-                if(players.size()>1){
-                    break;
-                }else{
-                    input = ui.getInput("Der skal være mindst 2 spillere. Skriv navn på spiller: ");
-                }
-            }
-         registerPlayer(input, 30000);
+    private void registerPlayers() {
+        players = new ArrayList<>();//reset players array
+        while(this.players.size()<6){
+            createPlayer(null,0);
         }
-
     }
 
-    private void registerPlayer(String name, int balance) {
-        Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
-        players.add(p);
+    public void displayPlayers(){
+ for(Player c: players){
+        System.out.println(c);
     }
-
-    private void runGameLoop(){
+}
+ private void runGameLoop(){
         int count = 0;
-
-        String  input = "Y";
+        String input = "Y";
         while(input.equalsIgnoreCase("Y")){
             currentPlayer = players.get(count);
-            throwAndMove();
-            input = ui.getInput("Fortsæt? Y/N");
+            ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
+            //throwAndMove()
+            input = ui.promptText("Fortsæt? Y/N: ");
             count++;
             if(count == players.size()){
                 count = 0;
             }
         }
 
+ }
 
-    }
-
-    private void throwAndMove() {
-
-        ui.displayMessage("Det er "+currentPlayer.getName()+"'s tur");
-        /**
-         * Kast terninger
-         * Vis hvad der blev slået
-         * opdater spillerens position på brættet
-         * Få fat i feltet spilleren er landet på
-         * *
-         */
-        int result = 6;//dice.rollDiceSum();
-        int newPosition = currentPlayer.updatePosition(result);
-
-        Field f = board.getField(newPosition);
-
-   landAndAct(f);
-
-
-    }
-
-    private void landAndAct(Field f) {
-        /* Få fat i den besked spilleren skal se når han lander på et felt
-         * Vis beskeden og afvent spillerens svar
-         * modtag og send svaret til feltet
-         * vis spillerens saldo*/
-        String msg = f.onLand(currentPlayer);
-        String response = ui.getInput(msg);
-
-        msg = f.processResponse(response, currentPlayer);
-
-
-
-        ui.displayMessage(msg);
-      ui.displayMessage(currentPlayer.toString());
-
-
-    }
-
-
-    public void endGame(){
-        //Gemme ændringer (data persistence)
-        io.savePlayerData(players);
-    }
-
-    private void displayPlayers() {
-        String s ="\nGame status:\n";
-
-        for (Player p:players) {
-            //  s += p.toString();
-            s = s.concat(p.toString()+"\n");
-        }
-
-        ui.displayMessage(s);
-    }
 }

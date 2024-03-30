@@ -1,3 +1,0 @@
-Name,Balance
-tess,35000
-signe,40000
